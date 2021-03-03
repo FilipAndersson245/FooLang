@@ -3,12 +3,16 @@ name = "foolang"
 version = "0.1.0"
 authors = ["Filip Andersson"]
 edition = "2018"
-
 description  = "A toy programing language as a learning exercise."
 license-file = "LICENCE"
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+members = [
+    "crates/lexer",
+]
+
+[profile.dev]
+debug = 0
 
 [profile.release]
 lto="thin"
-
-[dependencies]
