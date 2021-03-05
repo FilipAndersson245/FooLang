@@ -12,5 +12,8 @@ members = ["crates/lexer"]
 [profile.dev]
 debug = 0
 
+[profile.bench]
+lto = true
+
 [profile.release]
-lto = "thin"
+lto = "fat"
