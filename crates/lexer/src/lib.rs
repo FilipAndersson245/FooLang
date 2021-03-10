@@ -9,22 +9,7 @@ use nom::{
 };
 use nom::{character::complete::space1, combinator::value};
 
-#[derive(Clone, Debug, Hash, PartialEq)]
-pub enum SyntaxToken<'a> {
-    Whitespace(&'a str),
-    FnKw(&'a str),
-    LetKw(&'a str),
-    Ident(&'a str),
-    Number(&'a str),
-    Plus(&'a str),
-    Minus(&'a str),
-    Star(&'a str),
-    Slash(&'a str),
-    Equals(&'a str),
-    LBrace(&'a str),
-    RBrace(&'a str),
-    Root(&'a str),
-}
+use types::SyntaxToken;
 
 fn is_space(s: &str) -> IResult<&str, SyntaxToken> {
     map(space1, |space: &str| SyntaxToken::Whitespace(space))(s)
@@ -157,6 +142,18 @@ mod tests {
                 SyntaxToken::Plus("+"),
                 SyntaxToken::Number("24")
             ]
-        )
+        );
+
+        let tokens = tokenize(" 776* 46").unwrap();
+        assert_eq!(
+            tokens,
+            vec![
+                SyntaxToken::Whitespace(" "),
+                SyntaxToken::Number("776"),
+                SyntaxToken::Star("*"),
+                SyntaxToken::Whitespace(" "),
+                SyntaxToken::Number("46")
+            ]
+        );
     }
 }

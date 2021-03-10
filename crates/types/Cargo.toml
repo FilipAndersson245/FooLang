@@ -1,0 +1,12 @@
+[package]
+name = "types"
+version = "0.1.0"
+authors = ["Filip Andersson"]
+edition = "2018"
+
+
+[dependencies]
+rowan = "0.12"
+num = "0.4"
+num-traits = "0.2"
+num-derive = "0.3"

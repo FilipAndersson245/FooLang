@@ -7,13 +7,13 @@ description = "A toy programing language as a learning exercise."
 license-file = "LICENCE"
 
 [workspace]
-members = ["crates/lexer"]
+members = ["crates/lexer", "crates/parser", "crates/types"]
 
 [profile.dev]
 debug = 0
 
-[profile.bench]
-lto = true
+# [profile.bench]
+# lto = true
 
-[profile.release]
-lto = "fat"
+# [profile.release]
+# lto = "fat"
